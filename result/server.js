@@ -57,6 +57,10 @@ function collectVotesFromResult(result) {
   var votes = {a: 0, b: 0};
 
   result.rows.forEach(function (row) {
+    // Don't count votes for cats!
+    if (row.vote === 'a') {
+      return;
+    }
     votes[row.vote] = parseInt(row.count);
   });
 
